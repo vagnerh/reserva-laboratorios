@@ -11,6 +11,7 @@ Protótipo front-end desenvolvido a partir da atividade **“Do UML ao Software�
 
 Não há instalação de dependências, servidor, banco de dados ou backend.
 
+
 ## Arquivos
 
 - `index.html` — estrutura e campos da interface.
@@ -30,16 +31,7 @@ Não há instalação de dependências, servidor, banco de dados ou backend.
 - Cada confirmação é incluída na lista da página e atualiza os indicadores.
 - As reservas são mantidas apenas em memória; atualizar ou fechar a página limpa a lista.
 
-## Limites conhecidos
 
-Este é um protótipo didático. Não há autenticação real, persistência, backend, banco de dados, integração com calendário ou verificação de conflitos de horário. Esses pontos não fazem parte das restrições e requisitos da atividade recebida.
-
-## Testar a regra de capacidade (opcional)
-
-Com Node.js instalado, dentro da pasta do projeto execute:
-
-```bash
-node tests/testar_regras.js
-```
-
-O teste verifica os cinco casos principais da regra de elegibilidade.
+## Links
+- https://vagnerh.github.io/reserva-laboratorios/  (github pages)
+- https://www.figma.com/design/rP0gEdPSOE6KTdo07CEZ0l/Res_Lab?node-id=0-1&t=oFZGHgtJTZL2mAN1-1 (figma)
