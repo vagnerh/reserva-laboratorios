@@ -239,19 +239,13 @@ button, input, select {
 
 .lab-card {
   border: 1px solid var(--borda);
-  border-left: 4px solid var(--verde);
   border-radius: 3px;
   padding: 12px;
   background-color: #fcfbf9;
 }
 
 .lab-card.indisponivel {
-  border-left-color: var(--vermelho);
   opacity: 0.88;
-}
-
-.lab-card.restrito {
-  border-left-color: #d97706;
 }
 
 .lab-card-topo {
