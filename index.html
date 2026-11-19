@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva de Laboratórios — UNINASSAU</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="rules.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <div class="wrap topo-flex">
+      <div class="titulo-sistema">
+        <h1>Controle de Reserva de Laboratórios</h1>
+        <span>Protótipo Acadêmico · Engenharia de Software</span>
+      </div>
+      <div class="resumo-linha">
+        <span>Salas: <strong id="total-labs">3</strong></span>
+        <span>Livres: <strong id="available-labs">2</strong></span>
+        <span>Reservas na sessão: <strong id="total-reservations">0</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap grade-app">
+    <!-- Coluna esquerda: Formulário + Lista abaixo -->
+    <div class="coluna-principal">
+      <section class="bloco">
+        <div class="bloco-cabecalho">
+          <h2>Solicitar reserva</h2>
+          <small>* Campos obrigatórios</small>
+        </div>
+
+        <div id="form-feedback" class="mensagem-status" role="status" hidden></div>
+
+        <form id="reservation-form" novalidate>
+          <fieldset class="grupo">
+            <legend>1. Dados do Professor</legend>
+            <div class="duas-colunas">
+              <div class="campo">
+                <label for="professor-nome">Nome completo *</label>
+                <input id="professor-nome" name="professorNome" type="text" placeholder="Ex.: Maria Oliveira" maxlength="100" required>
+              </div>
+              <div class="campo">
+                <label for="professor-matricula">Matrícula *</label>
+                <input id="professor-matricula" name="professorMatricula" type="text" inputmode="numeric" placeholder="Ex.: 20241089" maxlength="30" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="grupo">
+            <legend>2. Detalhes do Agendamento</legend>
+            <div class="duas-colunas">
+              <div class="campo">
+                <label for="finalidade">Finalidade *</label>
+                <select id="finalidade" name="finalidade" required>
+                  <option value="" selected disabled>Selecione...</option>
+                  <option value="Aula regular">Aula regular</option>
+                  <option value="Monitoria">Monitoria</option>
+                  <option value="Pesquisa">Pesquisa</option>
+                  <option value="Reunião">Reunião</option>
+                  <option value="Outra atividade">Outra atividade</option>
+                </select>
+                <small class="ajuda">Define quais salas ficam liberadas.</small>
+              </div>
+
+              <div class="campo">
+                <label for="laboratorio">Laboratório *</label>
+                <select id="laboratorio" name="laboratorio" required>
+                  <option value="" selected disabled>Escolha a finalidade antes</option>
+                </select>
+                <small id="lab-hint" class="ajuda">Salas indisponíveis ficam bloqueadas.</small>
+              </div>
+            </div>
+
+            <div class="duas-colunas">
+              <div class="campo">
+                <label for="data">Data *</label>
+                <input id="data" name="data" type="date" required>
+              </div>
+              <div class="campo">
+                <label for="horario">Horário *</label>
+                <input id="horario" name="horario" type="time" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="botoes">
+            <button type="submit" class="btn-confirmar">Confirmar reserva</button>
+            <button type="reset" class="btn-limpar">Limpar formulário</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="bloco">
+        <div class="bloco-cabecalho">
+          <h2>Reservas realizadas nesta sessão</h2>
+          <span class="badge-total">Total: <strong id="reservation-count">0</strong></span>
+        </div>
+
+        <div id="reservation-list" class="lista-reservas"></div>
+
+        <p class="aviso-rodape-bloco">
+          Os registros ficam apenas na memória da página e são apagados ao atualizar o navegador.
+        </p>
+      </section>
+    </div>
+
+    <!-- Coluna direita: Situação dos laboratórios -->
+    <aside class="coluna-lateral">
+      <section class="bloco">
+        <div class="bloco-cabecalho">
+          <h2>Laboratórios</h2>
+          <small>Capacidade e status</small>
+        </div>
+
+        <div class="lista-labs" id="lab-list"></div>
+
+        <div class="caixa-regra">
+          <strong>Regra de aula regular:</strong>
+          <p>Laboratórios com capacidade inferior a 30 alunos não podem ser reservados para aulas regulares.</p>
+        </div>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="rodape">
+    <div class="wrap rodape-flex">
+      <span>Do UML ao Software · HTML, CSS e JS puro</span>
+      <span>Sem backend ou banco de dados</span>
+    </div>
+  </footer>
+</body>
+</html>
